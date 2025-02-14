@@ -41,7 +41,13 @@
   color: #888;
 }
 
-.repoItem {
-  display: flex;
-  flex-direction: column;
+.repo {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #888888;
+}
+
+.item {
+  padding: 2em 5em;
+  text-align: left;
 }
