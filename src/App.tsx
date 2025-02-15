@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from "./hooks/redux.ts";
 import Repo from "../components/Repo.tsx";
 import Input from "../components/Input";
 import {fetchRepo} from "./store/reducers/ActionCreators.ts";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import {incrementPage} from "./store/reducers/RepoSlice.ts";
 
 function App() {

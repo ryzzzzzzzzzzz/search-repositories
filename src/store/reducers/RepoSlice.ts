@@ -48,7 +48,5 @@ export const repoSlice = createSlice({
     }
 })
 
-    // [...state.repos, action.payload]
-
 export const {addUser, incrementPage} = repoSlice.actions;
 export default repoSlice.reducer
