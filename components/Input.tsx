@@ -1,16 +1,16 @@
 import {useState} from "react";
 import {useAppDispatch} from "../src/hooks/redux.ts";
-import {fetchRepo} from "../src/store/reducers/ActionCreators.ts";
+import {addUser} from "../src/store/reducers/RepoSlice.ts";
 
 const Input = () => {
-    const [name, setName] = useState('');
+    const [user, setUser] = useState('ryzzzzzzzzzzz');
     const dispatch = useAppDispatch();
 
-    const handleChange = e => setName(e.target.value);
+    const handleChange = e => setUser(e.target.value);
 
     const handleKeyDown = e => {
         if (e.keyCode === 13) {
-            dispatch(fetchRepo(name))
+            dispatch(addUser(user))
         }
     }
 
@@ -20,12 +20,16 @@ const Input = () => {
                 type="text"
                 placeholder="Enter GiyHub user name"
                 autoFocus={true}
-                value={name}
+                value={user}
                 spellCheck={false}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
             />
-            <button onClick={() => dispatch(fetchRepo(name))}>Get repositories</button>
+            <button className='btn' onClick={() => {
+                dispatch(addUser(user));
+            }}>
+                Get repositories
+            </button>
         </div>
     )
 }

@@ -42,12 +42,22 @@
 }
 
 .repo {
-  width: 50%;
-  margin: 0 auto;
+  width: 70%;
+  margin: 1em auto 1em;
   border: 1px solid #888888;
 }
 
 .item {
-  padding: 2em 5em;
+  padding: 2em 5em 2em 2em;
   text-align: left;
+  min-width: 320px;
+}
+
+.btn {
+  margin-left: 2em;
+}
+
+input {
+  width: 30%;
+  height: 2em;
 }

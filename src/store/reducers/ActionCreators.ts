@@ -3,9 +3,9 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchRepo = createAsyncThunk(
     'repo/fetchAll',
-    async (name) => {
+    async ({user, currentPage}) => {
         try {
-            const response = await fetch<IRepo[]>('https://api.github.com/users/' + name + '/repos')
+            const response = await fetch<IRepo[]>(`https://api.github.com/users/${user}/repos?per_page=20&page=${currentPage}`)
             return response.json()
         } catch {
             return 'Failed to load repositories'
