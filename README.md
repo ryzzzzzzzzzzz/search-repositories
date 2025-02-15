@@ -1,50 +1,21 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Простое веб-приложение, которое позволяет пользователям искать репозитории на GitHub по имени пользователя и отображать информацию о найденных репозиториях с помощью GitHub Repositories API
 
-Currently, two official plugins are available:
+## Функционал
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Текстовое поле для ввода имени пользователя. Триггером к поиску является нажатие на кнопку либо на клавишу Enter
 
-## Expanding the ESLint configuration
+Карточки с информацией о репозиториях пользователя, которые включают: -- Название репозитория -- Описание (если доступно) -- Ссылку на репозиторий --Количество звёзд (stars) --Дату последнего обновления
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Пагинация с шагом 20, триггером к выполнению запроса за следующей страницей является прокрутка экрана вниз
 
-- Configure the top-level `parserOptions` property like this:
+Если пользователь вводит некорректное имя пользователя или если возникают ошибки при запросе к API, приложение отображает соответствующее сообщение об ошибке, понятное человеку.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Стек технологий
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- React
+- TypeScript
+- Redux Toolkit
+- GitHub REST API
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
