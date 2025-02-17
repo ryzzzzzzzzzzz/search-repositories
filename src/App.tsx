@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from "./hooks/redux.ts";
 import Repo from "../components/Repo.tsx";
 import Input from "../components/Input";
 import {fetchRepo} from "./store/reducers/ActionCreators.ts";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {incrementPage} from "./store/reducers/RepoSlice.ts";
 
 function App() {
@@ -12,8 +12,9 @@ function App() {
     const [page, setPage] = useState<number>(1);
 
     useEffect(() => {
+        const stop = Array.isArray(repos) && repos.length%20;
         const handleScroll = () => {
-            if (document.documentElement.getBoundingClientRect().bottom < 600) {
+            if (document.documentElement.getBoundingClientRect().bottom < 630 && stop === 0) {
                 if (page === currentPage) {
                     dispatch(incrementPage());
                     setTimeout(() => {
@@ -25,7 +26,7 @@ function App() {
         window.addEventListener('scroll', handleScroll)
 
         return () => window.removeEventListener("scroll", handleScroll)
-    }, []);
+    }, [repos]);
 
     useEffect(() => {
         dispatch(fetchRepo({user, currentPage}))
